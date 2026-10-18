@@ -94,35 +94,33 @@ def rgb_2_hsi(img: np.ndarray)-> np.ndarray:
     img_hsi = np.stack((H, S, I), axis=2)
     return  (img_hsi * 255).astype(np.uint8)
 
-def contraste_partes(img: np.ndarray)->np.ndarray:
-    img_out = img.astype(np.float64)
-    r_min = img.min()
-    r_max = img.max()
-    img_out = (255 / (r_max - r_min)) * (img_out - r_min)
-    img_out = np.clip(img_out, 0, 255)
-    return img_out.astype(np.uint8)
+def contraste_log(img: np.ndarray) -> np.ndarray:   # do professor
+    img = img.astype(np.float64)
+    c = 255 / np.log(256)
+    img_out = c * np.log(1 + img)
+    return np.clip(img_out, 0, 255).astype(np.uint8)
+
 
 def contraste_cor(img_bgr: np.ndarray) -> np.ndarray:
     img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
     img_hsi = rgb_2_hsi(img_rgb)
 
     # so canal I
-    img_hsi[ :, :, 2] = contraste_partes(img_hsi[:, :, 2])
+    img_hsi[:, :, 2] = contraste_log(img_hsi[:, :, 2])
 
     img_rgb_out = hsi_2_rgb(img_hsi)
-
     return cv2.cvtColor(img_rgb_out, cv2.COLOR_RGB2BGR)
 
 
 if __name__ == '__main__':
     img = cv2.imread('images/colour_stream_dark.tif', cv2.IMREAD_COLOR)
-
     img_resultado = contraste_cor(img)
+    cv2.imwrite('resultado_2_1b.png', img_resultado)
 
-    out = cv2.hconcat([add_title(img, "Original"), add_title(img_resultado, "Contraste RGB Uniforme")])
+    out = cv2.hconcat([add_title(img.copy(), "Original"),
+                       add_title(img_resultado.copy(), "Contraste Log em I (HSI)")])
     cv2.namedWindow('Comparativo 2.1.b', cv2.WINDOW_NORMAL)
     cv2.imshow('Comparativo 2.1.b', out)
-
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
