@@ -115,7 +115,7 @@ def contraste_cor(img_bgr: np.ndarray) -> np.ndarray:
 
 
 if __name__ == '__main__':
-    img = cv2.imread('images/cat_puppy.png', cv2.IMREAD_COLOR)
+    img = cv2.imread('images/colour_flower_opac.tif', cv2.IMREAD_COLOR)
 
     img_resultado = contraste_cor(img)
 
