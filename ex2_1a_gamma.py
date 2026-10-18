@@ -37,13 +37,8 @@ def correcao_gamma(img: np.ndarray, gamma: float) -> np.ndarray:
     return img_out.astype(np.uint8)
 
 
-<<<<<<< HEAD
 def executar():
     img = cv2.imread("images/gamma.png", cv2.IMREAD_GRAYSCALE)
-=======
-if __name__ == "__main__":
-    img = cv2.imread("imagens/ex2_1a_gamma.jpg", cv2.IMREAD_GRAYSCALE)
->>>>>>> ec660a541679f25abbda92a5b4d732eec2149990
 
     gamma = float(input("Digite o valor de gamma (maior que 0): "))
 
@@ -57,6 +52,11 @@ if __name__ == "__main__":
     cv2.imshow("comparativo", out)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    pass
+
+
+if __name__ == "__main__":
+    executar()
 
 # PARA A ARGUIÇÃO:
 # TODO: saber explicar por que a normalização é necessária
