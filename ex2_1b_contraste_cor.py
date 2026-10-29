@@ -115,7 +115,6 @@ def contraste_cor(img_bgr: np.ndarray) -> np.ndarray:
 if __name__ == '__main__':
     img = cv2.imread('images/colour_stream_dark.tif', cv2.IMREAD_COLOR)
     img_resultado = contraste_cor(img)
-    cv2.imwrite('resultado_2_1b.png', img_resultado)
 
     out = cv2.hconcat([add_title(img.copy(), "Original"),
                        add_title(img_resultado.copy(), "Contraste Log em I (HSI)")])

@@ -35,17 +35,12 @@ def etapa_4_remocao_objetos_pequenos(img_bin):
     # TODO: decidir como tratar a mata no topo da imagem
     pass
 
-
-def executar():
+if __name__ == "__main__":
     # TODO: ler a imagem original (arquivo original fornecido pelo professor)
     # TODO: executar as etapas na ordem escolhida
     # TODO: exibir e salvar o resultado de CADA etapa em resultados/
     # TODO: imprimir os parâmetros usados em cada etapa
     pass
-
-
-if __name__ == "__main__":
-    executar()
 
 # ANÁLISE (para a apresentação):
 # TODO: contar manualmente os objetos na imagem final
