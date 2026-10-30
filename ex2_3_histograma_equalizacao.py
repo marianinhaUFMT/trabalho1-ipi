@@ -55,20 +55,18 @@ def tabela_mapeamento(niveis, n_k, p, cdf, lut):
 
 
 if __name__ == "__main__":
-    # TODO: ler a imagem em tons de cinza (preferir uma de baixo contraste)
     img_gray = cv2.imread("images/colour_flower_opac.tif", cv2.IMREAD_GRAYSCALE)
-    # TODO: calcular e plotar o histograma original (matplotlib)
-     # Equalização manual.
+
     img_equalizada, n_k, p, cdf, lut = equalizar(img_gray)
 
-    # Equalização com OpenCV (para validação).
+    # equalizacao com OpenCV (para validacao).
     img_equalizada_cv2 = cv2.equalizeHist(img_gray)
     hist_equalizada_cv2 = calcular_histograma(img_equalizada_cv2)
 
-    # Calcula o histograma da imagem resultante.
+    # histograma
     hist_equalizado = calcular_histograma(img_equalizada)
 
-    # Seleciona três níveis distintos que realmente existem.
+    # seleciona tres niveis de intensidade presentes na imagem original
     niveis_presentes = np.flatnonzero(n_k > 0)
 
     if len(niveis_presentes) < 3:
@@ -83,10 +81,9 @@ if __name__ == "__main__":
         int(niveis_presentes[-1])
     ]
 
-    # Exibe a tabela de mapeamento.
+    # exibe a tabela de mapeamento.
     tabela_mapeamento(niveis, n_k, p, cdf, lut)
 
-    # Monta uma figura com os quatro resultados.
     fig, axes = plt.subplots(3, 2, figsize=(12, 9))
 
     # Imagem original.
@@ -136,8 +133,3 @@ if __name__ == "__main__":
 
     plt.tight_layout()
     plt.show()
-
-# PARA A ARGUIÇÃO:
-# TODO: saber explicar por que o histograma equalizado não fica plano
-# TODO: saber explicar por que se usa a CDF (crescente, preserva a ordem dos tons)
-# TODO: saber montar a tabela à mão para uma imagem pequena

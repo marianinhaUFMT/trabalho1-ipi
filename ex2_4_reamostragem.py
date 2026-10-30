@@ -220,8 +220,3 @@ if __name__ == "__main__":
     plt.tight_layout()
     plt.show()
 
-# COMPARAÇÃO (para a apresentação):
-# TODO: vizinho mais próximo -> blocos/serrilhado na ampliação, perda de detalhes na redução
-# TODO: bilinear -> transições suaves, mas imagem mais borrada
-# TODO: saber explicar por que o mapeamento inverso evita buracos
-# TODO: saber fazer a conta bilinear à mão (4 vizinhos, dx, dy)

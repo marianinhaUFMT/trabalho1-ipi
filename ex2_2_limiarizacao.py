@@ -46,11 +46,3 @@ if __name__ == "__main__":
     plt.axis('off')
 
     plt.show()
-
-    # TODO (opcional): exibir o histograma marcando cada T, para justificar a escolha
-    pass
-
-# COMPARAÇÃO (para a apresentação):
-# TODO: descrever o que acontece com T baixo (fundo vaza para branco)
-# TODO: descrever o que acontece com T alto (objeto perde partes)
-# TODO: relacionar o melhor T com o vale entre os picos do histograma

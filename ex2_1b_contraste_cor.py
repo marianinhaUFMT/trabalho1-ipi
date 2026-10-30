@@ -123,7 +123,3 @@ if __name__ == '__main__':
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-# JUSTIFICATIVA (escrever no README ou falar na apresentação):
-# TODO: explicar por que ajustar R, G e B separadamente altera a cor (muda as proporções)
-# TODO: explicar por que ajustar só a intensidade (I) preserva matiz e saturação
-# TODO: comentar o efeito do clip na volta para RGB (pixels fora do gamut mudam de cor)
